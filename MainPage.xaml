@@ -1,0 +1,37 @@
+﻿<Page x:Class="Biblioteka.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Biblioteka"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage" Width="800" Height="450" Background="Black" Foreground="White">
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+
+        <Label FontSize="50" Foreground="white" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+
+        <Button x:Name="addButton" Grid.Column="1" Grid.Row="1" Click="addButton_Click">add Book</Button>
+        <Button x:Name="editButton" Grid.Column="1" Grid.Row="3" Click="borrowButton_Click">Borrow</Button>
+        <Button x:Name="Button" Grid.Column="3" Grid.Row="1"  Click="returnButton_Click">Returns</Button>
+        <Button x:Name="removeButton" Grid.Column="3" Grid.Row="3"  Click="historyButton_Click">show History</Button>
+
+    </Grid>
+</Page>
