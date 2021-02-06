@@ -28,10 +28,25 @@
 
         <Label FontSize="50" Foreground="white" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
 
-        <Button x:Name="addButton" Grid.Column="1" Grid.Row="1" Click="addButton_Click">add Book</Button>
+        <Button x:Name="addButton" Grid.Column="1" Grid.Row="1" Click="addButton_Click" >add Book</Button>
         <Button x:Name="editButton" Grid.Column="1" Grid.Row="3" Click="borrowButton_Click">Borrow</Button>
         <Button x:Name="Button" Grid.Column="3" Grid.Row="1"  Click="returnButton_Click">Returns</Button>
         <Button x:Name="removeButton" Grid.Column="3" Grid.Row="3"  Click="historyButton_Click">show History</Button>
+        <Popup Name="MyPopup"
+
+               Placement="Mouse"
+
+               HorizontalOffset="-100"
+
+               VerticalOffset="-100"
+
+               AllowsTransparency="True">
+
+            <local:ADdSthUserControl></local:ADdSthUserControl>
+           
+            
+
+        </Popup>
 
     </Grid>
 </Page>

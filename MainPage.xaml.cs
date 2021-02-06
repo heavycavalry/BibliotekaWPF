@@ -24,5 +24,27 @@ namespace Biblioteka
         {
             InitializeComponent();
         }
+
+        private void addButton_Click(object sender, RoutedEventArgs e)
+        {
+            MyPopup.IsOpen = true;
+            addBookPage window = new addBookPage();
+            window.Show();
+        }  
+
+        private void returnButton_Click(object sender, RoutedEventArgs e)
+        {
+            MyPopup.IsOpen = false;
+        }
+
+        private void borrowButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void historyButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
