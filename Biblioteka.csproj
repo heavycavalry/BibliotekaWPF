@@ -70,25 +70,25 @@
     <Compile Include="ADdSthUserControl.xaml.cs">
       <DependentUpon>ADdSthUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Autorzy.cs">
-      <DependentUpon>BibliotekaModel.tt</DependentUpon>
+    <Compile Include="Author.cs">
+      <DependentUpon>Library.tt</DependentUpon>
     </Compile>
-    <Compile Include="BibliotekaModel.cs">
+    <Compile Include="Book.cs">
+      <DependentUpon>Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Lend.cs">
+      <DependentUpon>Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LendHistory.cs">
+      <DependentUpon>Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Library.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BibliotekaModel.tt</DependentUpon>
+      <DependentUpon>Library.tt</DependentUpon>
     </Compile>
-    <Compile Include="Czytelnicy.cs">
-      <DependentUpon>BibliotekaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HistoriaWypozyczenia.cs">
-      <DependentUpon>BibliotekaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Ksiazki.cs">
-      <DependentUpon>BibliotekaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Wypozyczenia.cs">
-      <DependentUpon>BibliotekaModel.tt</DependentUpon>
+    <Compile Include="Reader.cs">
+      <DependentUpon>Library.tt</DependentUpon>
     </Compile>
     <Page Include="addBookPage.xaml">
       <SubType>Designer</SubType>
@@ -110,15 +110,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BibliotekaModel.Context.cs">
+    <Compile Include="Library.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BibliotekaModel.Context.tt</DependentUpon>
+      <DependentUpon>Library.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="BibliotekaModel.Designer.cs">
+    <Compile Include="Library.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BibliotekaModel.edmx</DependentUpon>
+      <DependentUpon>Library.edmx</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -146,12 +146,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="BibliotekaModel.edmx">
+    <EntityDeploy Include="Library.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BibliotekaModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>Library.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="BibliotekaModel.edmx.diagram">
-      <DependentUpon>BibliotekaModel.edmx</DependentUpon>
+    <None Include="Library.edmx.diagram">
+      <DependentUpon>Library.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -166,15 +166,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BibliotekaModel.Context.tt">
+    <Content Include="Library.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BibliotekaModel.Context.cs</LastGenOutput>
-      <DependentUpon>BibliotekaModel.edmx</DependentUpon>
+      <DependentUpon>Library.edmx</DependentUpon>
+      <LastGenOutput>Library.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="BibliotekaModel.tt">
+    <Content Include="Library.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BibliotekaModel.edmx</DependentUpon>
-      <LastGenOutput>BibliotekaModel.cs</LastGenOutput>
+      <DependentUpon>Library.edmx</DependentUpon>
+      <LastGenOutput>Library.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

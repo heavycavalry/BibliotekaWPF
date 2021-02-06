@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="13bcb3708b1c4bc181d3d2ba9ad30c92" Name="Diagram1">
+        <EntityTypeShape EntityType="LibraryModel.Author" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Book" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Lend" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.LendHistory" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Reader" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <AssociationConnector Association="LibraryModel.FK__Book__AuthorID__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK__Lend__AuthorID__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK__Lend__BookID__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK__LendHisto__BookI__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK__LendHisto__Reade__398D8EEE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

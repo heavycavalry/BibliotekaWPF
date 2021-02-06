@@ -12,13 +12,13 @@ namespace Biblioteka
     using System;
     using System.Collections.Generic;
     
-    public partial class HistoriaWypozyczenia
+    public partial class Lend
     {
-        public Nullable<int> CzytelnikID { get; set; }
-        public int KsiazkaID { get; set; }
-        public System.DateTime DataWypozyczenia { get; set; }
+        public int ID { get; set; }
+        public Nullable<int> AuthorID { get; set; }
+        public Nullable<int> BookID { get; set; }
     
-        public virtual Czytelnicy Czytelnicy { get; set; }
-        public virtual Ksiazki Ksiazki { get; set; }
+        public virtual Author Author { get; set; }
+        public virtual Book Book { get; set; }
     }
 }

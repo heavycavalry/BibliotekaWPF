@@ -12,23 +12,20 @@ namespace Biblioteka
     using System;
     using System.Collections.Generic;
     
-    public partial class Ksiazki
+    public partial class Reader
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Ksiazki()
+        public Reader()
         {
-            this.HistoriaWypozyczenias = new HashSet<HistoriaWypozyczenia>();
-            this.Wypozyczenias = new HashSet<Wypozyczenia>();
+            this.LendHistories = new HashSet<LendHistory>();
         }
     
         public int ID { get; set; }
-        public Nullable<int> AutorID { get; set; }
-        public string Tytul { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Pesel { get; set; }
     
-        public virtual Autorzy Autorzy { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HistoriaWypozyczenia> HistoriaWypozyczenias { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Wypozyczenia> Wypozyczenias { get; set; }
+        public virtual ICollection<LendHistory> LendHistories { get; set; }
     }
 }

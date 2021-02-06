@@ -39,11 +39,11 @@
         <Label Grid.Column="1" Grid.Row="2" FontSize="20" FontWeight="Bold">Nazwisko autora</Label>
         <Label Grid.Column="1" Grid.Row="3" FontSize="20" FontWeight="Bold">Tytuł</Label>
 
-        <TextBox Grid.Column="3" Grid.Row="1" FontSize="20"/>
-        <TextBox Grid.Column="3" Grid.Row="2" FontSize="20"/>
-        <TextBox Grid.Column="3" Grid.Row="3" FontSize="20"/>
+        <TextBox x:Name="imieInput" Grid.Column="3" Grid.Row="1" FontSize="20"/>
+        <TextBox x:Name="nazwiskoInput" Grid.Column="3" Grid.Row="2" FontSize="20"/>
+        <TextBox x:Name="tytulInput"  Grid.Column="3" Grid.Row="3" FontSize="20"/>
 
-        <Button Grid.Column="2" Grid.Row="4" Height="40" Margin="10,40,10,0">ADD BOOK</Button>
+        <Button x:Name="addBookBtn" Grid.Column="2" Grid.Row="4" Height="40" Margin="10,40,10,0" Click="addBookBtn_Click">ADD BOOK</Button>
 
     </Grid>
 </Window>

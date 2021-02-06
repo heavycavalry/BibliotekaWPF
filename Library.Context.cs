@@ -13,10 +13,10 @@ namespace Biblioteka
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Library_Entities : DbContext
+    public partial class LibraryEntities2 : DbContext
     {
-        public Library_Entities()
-            : base("name=Library_Entities")
+        public LibraryEntities2()
+            : base("name=LibraryEntities2")
         {
         }
     
@@ -25,10 +25,10 @@ namespace Biblioteka
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Autorzy> Autorzies { get; set; }
-        public virtual DbSet<Czytelnicy> Czytelnicies { get; set; }
-        public virtual DbSet<HistoriaWypozyczenia> HistoriaWypozyczenias { get; set; }
-        public virtual DbSet<Ksiazki> Ksiazkis { get; set; }
-        public virtual DbSet<Wypozyczenia> Wypozyczenias { get; set; }
+        public virtual DbSet<Author> Authors { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
+        public virtual DbSet<Lend> Lends { get; set; }
+        public virtual DbSet<LendHistory> LendHistories { get; set; }
+        public virtual DbSet<Reader> Readers { get; set; }
     }
 }

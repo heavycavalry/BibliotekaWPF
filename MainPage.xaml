@@ -6,47 +6,44 @@
       xmlns:local="clr-namespace:Biblioteka"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="MainPage" Width="800" Height="450" Background="Black" Foreground="White">
-
+      Title="MainPage" Width="800" Height="450" Background="#373737" Foreground="White">
+    <Page.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Background" Value="Gray"/>
+            <Setter Property="Foreground" Value="white"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Foreground" Value="white"/>
+        </Style>
+    </Page.Resources>
     <Grid>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="100"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="120"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
-        <Label FontSize="50" Foreground="white" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+        <Label FontSize="50" Foreground="AntiqueWhite" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center">BIBLIOTEKA </Label>
 
-        <Button x:Name="addButton" Grid.Column="1" Grid.Row="1" Click="addButton_Click" >add Book</Button>
-        <Button x:Name="editButton" Grid.Column="1" Grid.Row="3" Click="borrowButton_Click">Borrow</Button>
-        <Button x:Name="Button" Grid.Column="3" Grid.Row="1"  Click="returnButton_Click">Returns</Button>
-        <Button x:Name="removeButton" Grid.Column="3" Grid.Row="3"  Click="historyButton_Click">show History</Button>
-        <Popup Name="MyPopup"
-
-               Placement="Mouse"
-
-               HorizontalOffset="-100"
-
-               VerticalOffset="-100"
-
-               AllowsTransparency="True">
-
-            <local:ADdSthUserControl></local:ADdSthUserControl>
-           
-            
-
-        </Popup>
+        <Button x:Name="addBtn" Grid.Column="1" Grid.Row="1" Click="addBookButton_Click" >dodaj książkę</Button>
+        <Button x:Name="addReaderBtn" Grid.Column="1" Grid.Row="3" Click="addReaderButton_Click">dodaj czytelnika</Button>
+        <Button x:Name="borrowBtn" Grid.Column="2" Grid.Row="2" Click="borrowsButton_Click">wypożyczenia</Button>
+        <Button x:Name="returnBtn" Grid.Column="3" Grid.Row="1"  Click="returnButton_Click">zwroty</Button>
+        <Button x:Name="historyBtn" Grid.Column="3" Grid.Row="3"  Click="historyButton_Click">historia</Button>
 
     </Grid>
 </Page>
