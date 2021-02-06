@@ -67,6 +67,9 @@
     <Compile Include="addBookPage.xaml.cs">
       <DependentUpon>addBookPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="addReaderPage.xaml.cs">
+      <DependentUpon>addReaderPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ADdSthUserControl.xaml.cs">
       <DependentUpon>ADdSthUserControl.xaml</DependentUpon>
     </Compile>
@@ -91,6 +94,10 @@
       <DependentUpon>Library.tt</DependentUpon>
     </Compile>
     <Page Include="addBookPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="addReaderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

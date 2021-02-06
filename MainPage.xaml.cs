@@ -27,8 +27,8 @@ namespace Biblioteka
 
         private void addBookButton_Click(object sender, RoutedEventArgs e)
         {
-            addBookPage window = new addBookPage();
-            window.Show();
+            addBookPage bookWindow = new addBookPage();
+            bookWindow.Show();
         }  
 
         private void returnButton_Click(object sender, RoutedEventArgs e)
@@ -47,7 +47,8 @@ namespace Biblioteka
 
         private void addReaderButton_Click(object sender, RoutedEventArgs e)
         {
-
+            addReaderPage readerPage = new addReaderPage();
+            readerPage.Show();
         }
     }
 }
