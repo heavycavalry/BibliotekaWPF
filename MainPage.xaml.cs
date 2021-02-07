@@ -37,7 +37,8 @@ namespace Biblioteka
 
         private void borrowsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            LendingPage lendPage = new LendingPage();
+            lendPage.Show();
         }
 
         private void historyButton_Click(object sender, RoutedEventArgs e)

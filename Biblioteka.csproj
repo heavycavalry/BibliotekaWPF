@@ -70,9 +70,6 @@
     <Compile Include="addReaderPage.xaml.cs">
       <DependentUpon>addReaderPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ADdSthUserControl.xaml.cs">
-      <DependentUpon>ADdSthUserControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Author.cs">
       <DependentUpon>Library.tt</DependentUpon>
     </Compile>
@@ -84,6 +81,9 @@
     </Compile>
     <Compile Include="LendHistory.cs">
       <DependentUpon>Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LendingPage.xaml.cs">
+      <DependentUpon>LendingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Library.cs">
       <AutoGen>True</AutoGen>
@@ -101,7 +101,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ADdSthUserControl.xaml">
+    <Page Include="LendingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
