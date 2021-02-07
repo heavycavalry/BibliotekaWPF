@@ -76,11 +76,15 @@
     <Compile Include="Book.cs">
       <DependentUpon>Library.tt</DependentUpon>
     </Compile>
+    <Compile Include="BookTile.cs" />
     <Compile Include="Lend.cs">
       <DependentUpon>Library.tt</DependentUpon>
     </Compile>
     <Compile Include="LendHistory.cs">
       <DependentUpon>Library.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BooksPage.xaml.cs">
+      <DependentUpon>BooksPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="LendingPage.xaml.cs">
       <DependentUpon>LendingPage.xaml</DependentUpon>
@@ -98,6 +102,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="addReaderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BooksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Biblioteka
 {
@@ -35,10 +23,10 @@ namespace Biblioteka
         {
         }
 
-        private void borrowsButton_Click(object sender, RoutedEventArgs e)
+        private void booksButton_Click(object sender, RoutedEventArgs e)
         {
-            LendingPage lendPage = new LendingPage();
-            lendPage.Show();
+            BooksPage booksPage = new BooksPage();
+            booksPage.Show();
         }
 
         private void historyButton_Click(object sender, RoutedEventArgs e)
@@ -50,6 +38,12 @@ namespace Biblioteka
         {
             addReaderPage readerPage = new addReaderPage();
             readerPage.Show();
+        }
+
+        private void lendButton_Click(object sender, RoutedEventArgs e)
+        {
+            LendingPage lendpage = new LendingPage();
+            lendpage.Show();
         }
     }
 }

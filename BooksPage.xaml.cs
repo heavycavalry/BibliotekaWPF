@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,28 +12,30 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.Entity.Core.Objects;
 
 namespace Biblioteka
 {
     /// <summary>
     /// Interaction logic for LendingPage.xaml
     /// </summary>
-    public partial class LendingPage : Window
+    public partial class BooksPage : Window
     {
-        public LendingPage()
+        public BooksPage()
         {
             InitializeComponent();
+
         }
 
-
-        public void Data_Loaded(object sender, RoutedEventArgs e)
+        public void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var entities = new LibraryEntities2();
 
             var query = from book in entities.Books
-                        select new { Imie_Autora = book.Author.FirstName, Nazwisko_Autora = book.Author.LastName, Tytul = book.Title };
+                        select new { Imie_Autora = book.Author.FirstName, Nazwisko_Autora=book.Author.LastName, Tytul = book.Title};
 
-            lendDataGrid.ItemsSource = query.ToList();
+            bookDataGrid.ItemsSource = query.ToList();
         }
+
     }
 }

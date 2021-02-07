@@ -10,17 +10,19 @@
     <Page.Resources>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="10"/>
-            <Setter Property="Background" Value="Gray"/>
-            <Setter Property="Foreground" Value="white"/>
             <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Foreground" Value="DarkSlateGray"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="AntiqueWhite"/>
+            <Setter Property="BorderBrush" Value="DarkGray"/>
         </Style>
         <Style TargetType="Label">
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Foreground" Value="white"/>
         </Style>
     </Page.Resources>
-    <Grid>
 
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="*"/>
@@ -37,11 +39,12 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
-        <Label FontSize="50" Foreground="AntiqueWhite" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center">BIBLIOTEKA </Label>
+        <Label FontSize="50" Foreground="AntiqueWhite" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center">BIBLIOTEKA</Label>
 
         <Button x:Name="addBtn" Grid.Column="1" Grid.Row="1" Click="addBookButton_Click" >dodaj książkę</Button>
         <Button x:Name="addReaderBtn" Grid.Column="1" Grid.Row="3" Click="addReaderButton_Click">dodaj czytelnika</Button>
-        <Button x:Name="borrowBtn" Grid.Column="2" Grid.Row="2" Click="borrowsButton_Click">wypożyczenia</Button>
+        <Button x:Name="booksBtn" Grid.Column="2" Grid.Row="1" Click="booksButton_Click">baza książek</Button>
+        <Button x:Name="lendBtn" Grid.Column="2" Grid.Row="2" Click="lendButton_Click">wypożycz</Button>
         <Button x:Name="returnBtn" Grid.Column="3" Grid.Row="1"  Click="returnButton_Click">zwroty</Button>
         <Button x:Name="historyBtn" Grid.Column="3" Grid.Row="3"  Click="historyButton_Click">historia</Button>
 

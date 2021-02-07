@@ -15,6 +15,12 @@
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Foreground" Value="white"/>
         </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Foreground" Value="DarkSlateGray"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="AntiqueWhite"/>
+        </Style>
     </Window.Resources>
 
     <Grid>
