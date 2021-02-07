@@ -34,19 +34,21 @@ namespace Biblioteka
 
             if (ReaderExists(peselInput.Text))
             {
+                successInfo.Text = "";
                 exceptionInfo.Text = "Użytkownik o podanym peselu istnieje w bazie danych";
                 return;
             }
             if (peselInput.Text.Length < 11)
             {
+                successInfo.Text = "";
                 exceptionInfo.Text = "Niepoprawny pesel.";
                 return;
             }
             else
             {
-                exceptionInfo.Text = "";
                 entities.Readers.Add(reader);
                 entities.SaveChanges();
+                exceptionInfo.Text = "";
                 successInfo.Text = "Dodano czytelnika";
             }
             

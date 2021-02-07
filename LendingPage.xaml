@@ -15,6 +15,7 @@
             <Setter Property="Margin" Value="0,10,0,10"/>
         </Style>
     </Window.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
@@ -30,7 +31,6 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-
 
         <Label Grid.Column="1" Grid.Row="1" FontSize="20" FontWeight="Bold">Pesel:</Label>
         <Label Grid.Column="1" Grid.Row="2" FontSize="20" FontWeight="Bold">Książka:</Label>
