@@ -26,7 +26,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Grid.Column="1">History</Label>
+        <Label Grid.Row="0" Grid.Column="1">Historia wypożyczeń</Label>
         <DataGrid Grid.Column="1" Grid.Row="1" x:Name="historyDataGrid"></DataGrid>
     </Grid>
 </Window>

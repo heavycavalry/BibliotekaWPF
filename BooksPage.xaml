@@ -9,14 +9,15 @@
 
     <Window.Resources>
         <Style TargetType="Label">
-            <Setter Property="Foreground" Value="white"/>
+            <Setter Property="Foreground" Value="AntiqueWhite"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
     </Window.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
-            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
@@ -29,7 +30,8 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <DataGrid Name="bookDataGrid" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3"/>
+        <Label Grid.Row="0" Grid.Column="1">Książki</Label>
+        <DataGrid Name="bookDataGrid" Grid.Column="1" Grid.Row="3"/>
     </Grid>
 
 </Window>

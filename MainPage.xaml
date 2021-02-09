@@ -47,6 +47,7 @@
         <Button x:Name="lendBtn" Grid.Column="2" Grid.Row="2" Click="lendButton_Click">wypożycz</Button>
         <Button x:Name="returnBtn" Grid.Column="3" Grid.Row="1"  Click="returnButton_Click">zwroty</Button>
         <Button x:Name="historyBtn" Grid.Column="3" Grid.Row="3"  Click="historyButton_Click">historia</Button>
+        <Button x:Name="readersBtn" Grid.Column="2" Grid.Row="3"  Click="readersButton_Click">baza czytelników</Button>
 
     </Grid>
 </Page>

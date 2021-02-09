@@ -100,6 +100,9 @@
     <Compile Include="Reader.cs">
       <DependentUpon>Library.tt</DependentUpon>
     </Compile>
+    <Compile Include="ReadersPage.xaml.cs">
+      <DependentUpon>ReadersPage.xaml</DependentUpon>
+    </Compile>
     <Page Include="addBookPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -149,6 +152,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ReadersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

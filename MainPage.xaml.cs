@@ -46,5 +46,11 @@ namespace Biblioteka
             LendingPage lendpage = new LendingPage();
             lendpage.Show();
         }
+
+        private void readersButton_Click(object sender, RoutedEventArgs e)
+        {
+            ReadersPage readersPage = new ReadersPage();
+            readersPage.Show();
+        }
     }
 }
