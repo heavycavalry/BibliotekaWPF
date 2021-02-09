@@ -31,7 +31,8 @@ namespace Biblioteka
 
         private void historyButton_Click(object sender, RoutedEventArgs e)
         {
-
+            HistoryPage historyPage = new HistoryPage();
+            historyPage.Show();
         }
 
         private void addReaderButton_Click(object sender, RoutedEventArgs e)
