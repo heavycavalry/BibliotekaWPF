@@ -29,8 +29,11 @@ namespace Biblioteka
         {
             var entities = new LibraryEntities2();
 
-            var query = from book in entities.Books
-                        select new { Imie_Autora = book.Author.FirstName, Nazwisko_Autora = book.Author.LastName, Tytul = book.Title };
+            var query = from book in entities.Books 
+                        join lend in entities.Lends 
+                        on book.ID equals lend.BookID into j
+                        from lend in j.DefaultIfEmpty()
+                        select new { Imie_Autora = book.Author.FirstName, Nazwisko_Autora = book.Author.LastName, Tytul = book.Title, Wypożyczono = lend != null};
 
             lendDataGrid.ItemsSource = query.ToList();
         }
