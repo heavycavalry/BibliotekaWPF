@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,9 +34,34 @@ namespace Biblioteka
                         join lend in entities.Lends 
                         on book.ID equals lend.BookID into j
                         from lend in j.DefaultIfEmpty()
-                        select new { Imie_Autora = book.Author.FirstName, Nazwisko_Autora = book.Author.LastName, Tytul = book.Title, Wypożyczono = lend != null};
+                        select new { Identyfikator = book.ID, Imie_Autora = book.Author.FirstName, Nazwisko_Autora = book.Author.LastName, Tytul = book.Title, Wypożyczono = lend != null};
 
             lendDataGrid.ItemsSource = query.ToList();
+
+            lendDataGrid.Columns[0].Visibility = Visibility.Collapsed;
+        }
+
+
+        private int selectedBook; //id wybranej książki 
+
+        private void lendDataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+
+        }
+
+        private void lendButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            Lend lend = new Lend();
+
+            
+        }
+
+        private void lendDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedItem = lendDataGrid.SelectedItem;
+            var selectedString = selectedItem.ToString();
+            Console.WriteLine(selectedString);
         }
     }
 }

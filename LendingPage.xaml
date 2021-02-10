@@ -14,6 +14,15 @@
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="0,10,0,10"/>
         </Style>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="Foreground" Value="DarkSlateGray"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="AntiqueWhite"/>
+            <Setter Property="BorderBrush" Value="DarkGray"/>
+        </Style>
     </Window.Resources>
     
     <Grid>
@@ -29,6 +38,7 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
@@ -36,6 +46,7 @@
         <Label Grid.Column="1" Grid.Row="2" FontSize="20" FontWeight="Bold">Książka:</Label>
 
         <TextBox x:Name="peselInput" Grid.Column="2" Grid.Row="1" FontSize="20"/>
-        <DataGrid Name="lendDataGrid" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3"/>
+        <DataGrid Name="lendDataGrid" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" SelectedCellsChanged="lendDataGrid_SelectedCellsChanged" SelectionChanged="lendDataGrid_SelectionChanged"/>
+        <Button x:Name="lendBtn" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="4" Click="lendButton_Click" >wypożycz</Button>
     </Grid>
 </Window>
