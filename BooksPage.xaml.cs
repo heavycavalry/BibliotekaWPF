@@ -29,7 +29,7 @@ namespace Biblioteka
 
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var entities = new LibraryEntities2();
+            var entities = new LibraryEntities();
 
             var query = from book in entities.Books
                         select new { Imie_Autora = book.Author.FirstName, Nazwisko_Autora=book.Author.LastName, Tytul = book.Title};

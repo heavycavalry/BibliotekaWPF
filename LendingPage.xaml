@@ -13,6 +13,7 @@
         </Style>
         <Style TargetType="TextBox">
             <Setter Property="Margin" Value="0,10,0,10"/>
+            <Setter Property="Foreground" Value="Black"/>
         </Style>
         <Style TargetType="Button">
             <Setter Property="Margin" Value="10"/>
@@ -46,7 +47,10 @@
         <Label Grid.Column="1" Grid.Row="2" FontSize="20" FontWeight="Bold">Książka:</Label>
 
         <TextBox x:Name="peselInput" Grid.Column="2" Grid.Row="1" FontSize="20"/>
-        <DataGrid Name="lendDataGrid" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" SelectedCellsChanged="lendDataGrid_SelectedCellsChanged" SelectionChanged="lendDataGrid_SelectionChanged"/>
+        <DataGrid Name="lendDataGrid" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3"/>
         <Button x:Name="lendBtn" Grid.ColumnSpan="2" Grid.Column="1" Grid.Row="4" Click="lendButton_Click" >wypożycz</Button>
+        <TextBlock x:Name="wrongDataText" Foreground="red" FontSize="20" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+        <TextBlock x:Name="correctDataText" Foreground="green" FontSize="20" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+
     </Grid>
 </Window>

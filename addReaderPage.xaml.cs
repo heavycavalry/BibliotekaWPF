@@ -26,7 +26,7 @@ namespace Biblioteka
 
         private void addReaderBtn_Click(object sender, RoutedEventArgs e)
         {
-            var entities = new LibraryEntities2();
+            var entities = new LibraryEntities();
             var reader = new Reader();
             reader.FirstName = imieInput.Text.Trim();
             reader.LastName = nazwiskoInput.Text.Trim();
@@ -57,7 +57,7 @@ namespace Biblioteka
         public bool ReaderExists(string pesel)
         {
 
-            var entities = new LibraryEntities2();
+            var entities = new LibraryEntities();
 
             return entities.Readers.Any(x => x.Pesel.Equals(pesel, StringComparison.InvariantCultureIgnoreCase));
         }

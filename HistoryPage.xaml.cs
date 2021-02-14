@@ -22,7 +22,7 @@ namespace Biblioteka
         public HistoryPage()
         {
             InitializeComponent();
-            var entities = new LibraryEntities2();
+            var entities = new LibraryEntities();
 
             var query = from lend in entities.LendHistories
                         select new { Data = lend.LendingDate, AutorNazwisko = lend.Book.Author.LastName, AutorImie = lend.Book.Author.FirstName, Tytul = lend.Book.Title , ImieCzytelnika = lend.Reader.FirstName, NazwiskoCzytelnika = lend.Reader.LastName};

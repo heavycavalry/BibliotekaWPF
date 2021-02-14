@@ -13,10 +13,10 @@ namespace Biblioteka
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class LibraryEntities2 : DbContext
+    public partial class LibraryEntities : DbContext
     {
-        public LibraryEntities2()
-            : base("name=LibraryEntities2")
+        public LibraryEntities()
+            : base("name=LibraryEntities")
         {
         }
     

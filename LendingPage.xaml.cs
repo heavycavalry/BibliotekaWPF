@@ -1,23 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Biblioteka
 {
     /// <summary>
     /// Interaction logic for LendingPage.xaml
     /// </summary>
+    /// 
+
+    public class GridRow
+    {
+        public int Identyfikator { get; set; }
+        public string  Imie_Autora { get; set; }
+        public string Nazwisko_Autora { get; set; }
+        public string Tytul { get; set; }
+        public bool Wypozyczono { get; set; }
+
+    }
+
     public partial class LendingPage : Window
     {
         public LendingPage()
@@ -28,13 +29,13 @@ namespace Biblioteka
 
         public void Data_Loaded(object sender, RoutedEventArgs e)
         {
-            var entities = new LibraryEntities2();
+            var db = new LibraryEntities();
 
-            var query = from book in entities.Books 
-                        join lend in entities.Lends 
+            var query = from book in db.Books 
+                        join lend in db.Lends 
                         on book.ID equals lend.BookID into j
                         from lend in j.DefaultIfEmpty()
-                        select new { Identyfikator = book.ID, Imie_Autora = book.Author.FirstName, Nazwisko_Autora = book.Author.LastName, Tytul = book.Title, Wypożyczono = lend != null};
+                        select new GridRow { Identyfikator = book.ID, Imie_Autora = book.Author.FirstName, Nazwisko_Autora = book.Author.LastName, Tytul = book.Title, Wypozyczono = lend != null};
 
             lendDataGrid.ItemsSource = query.ToList();
 
@@ -42,26 +43,46 @@ namespace Biblioteka
         }
 
 
-        private int selectedBook; //id wybranej książki 
-
-        private void lendDataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-
-        }
-
         private void lendButton_Click(object sender, RoutedEventArgs e)
         {
+            wrongDataText.Text = "";
+            var db = new LibraryEntities();
 
-            Lend lend = new Lend();
+            if (peselInput.Text.Length < 11 || !(peselInput.Text.All(char.IsDigit)))
+            {
+                wrongDataText.Text = "Niepoprawny pesel. Wpisz ponownie.";
+            }
 
-            
+            var queryInputReader = from reader in db.Readers
+                                   where reader.Pesel == peselInput.Text
+                                   select reader;
+
+
+            var readers = queryInputReader.ToList<Reader>();
+
+            foreach (Reader reader in readers)
+            {
+                Lend lend = new Lend();
+                LendHistory lendHistory = new LendHistory();
+
+                GridRow selectedItem = lendDataGrid.SelectedItem as GridRow;
+
+                if (selectedItem != null) { 
+
+                    lend.ReaderID = reader.ID;
+                    lend.BookID = selectedItem.Identyfikator;
+                    db.Lends.Add(lend);
+                    db.SaveChanges();
+                    correctDataText.Text = "Wypożyczono.";
+                }
+                else
+                {
+                    wrongDataText.Text = "Wybierz książkę.";
+                }
+            }
         }
 
-        private void lendDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var selectedItem = lendDataGrid.SelectedItem;
-            var selectedString = selectedItem.ToString();
-            Console.WriteLine(selectedString);
-        }
+
     }
-}
+    }
+

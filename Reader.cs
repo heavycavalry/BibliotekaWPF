@@ -17,6 +17,7 @@ namespace Biblioteka
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Reader()
         {
+            this.Lends = new HashSet<Lend>();
             this.LendHistories = new HashSet<LendHistory>();
         }
     
@@ -25,6 +26,8 @@ namespace Biblioteka
         public string LastName { get; set; }
         public string Pesel { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Lend> Lends { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LendHistory> LendHistories { get; set; }
     }

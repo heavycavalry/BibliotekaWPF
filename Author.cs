@@ -18,7 +18,6 @@ namespace Biblioteka
         public Author()
         {
             this.Books = new HashSet<Book>();
-            this.Lends = new HashSet<Lend>();
         }
     
         public int ID { get; set; }
@@ -27,7 +26,5 @@ namespace Biblioteka
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Book> Books { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lend> Lends { get; set; }
     }
 }

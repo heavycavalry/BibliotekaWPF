@@ -17,6 +17,7 @@ namespace Biblioteka
         public Nullable<int> ReaderID { get; set; }
         public int BookID { get; set; }
         public System.DateTime LendingDate { get; set; }
+        public Nullable<System.DateTime> ReturnDate { get; set; }
     
         public virtual Book Book { get; set; }
         public virtual Reader Reader { get; set; }

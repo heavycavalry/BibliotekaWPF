@@ -15,10 +15,10 @@ namespace Biblioteka
     public partial class Lend
     {
         public int ID { get; set; }
-        public Nullable<int> AuthorID { get; set; }
-        public Nullable<int> BookID { get; set; }
+        public int ReaderID { get; set; }
+        public int BookID { get; set; }
     
-        public virtual Author Author { get; set; }
         public virtual Book Book { get; set; }
+        public virtual Reader Reader { get; set; }
     }
 }

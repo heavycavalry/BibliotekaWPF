@@ -12,7 +12,7 @@ namespace Biblioteka
         {
             InitializeComponent();
 
-            var entities = new LibraryEntities2();
+            var entities = new LibraryEntities();
 
             var query = from reader in entities.Readers
                         select new { Identyfikator = reader.ID, Nazwisko = reader.LastName, Imie = reader.FirstName , Pesel = reader.Pesel };
