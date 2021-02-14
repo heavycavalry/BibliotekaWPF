@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Linq;
 using System.Windows;
 
@@ -67,12 +68,20 @@ namespace Biblioteka
 
                 GridRow selectedItem = lendDataGrid.SelectedItem as GridRow;
 
-                if (selectedItem != null) { 
-
+                if (selectedItem != null) {
                     lend.ReaderID = reader.ID;
                     lend.BookID = selectedItem.Identyfikator;
                     db.Lends.Add(lend);
+
+                    lendHistory.ReaderID = reader.ID;
+                    lendHistory.BookID = selectedItem.Identyfikator;
+                    lendHistory.LendingDate = DateTime.Now;
+                    TimeSpan month = new TimeSpan(30,0,0,0);
+                    lendHistory.ReturnDate = DateTime.Now.Add(month);
+                    db.LendHistories.Add(lendHistory);
+
                     db.SaveChanges();
+                    wrongDataText.Text = "";
                     correctDataText.Text = "Wypożyczono.";
                 }
                 else
