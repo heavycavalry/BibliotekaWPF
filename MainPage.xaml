@@ -5,28 +5,48 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Biblioteka"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="MainPage" Width="800" Height="450" Background="#373737" Foreground="White">
+      d:DesignHeight="500" d:DesignWidth="1000"
+      Title="MainPage" Width="1000" Height="500" Background="#333533" FontSize="22" Foreground="#EFEDE6">
     <Page.Resources>
-        <Style TargetType="Button">
-            <Setter Property="Margin" Value="10"/>
-            <Setter Property="FontSize" Value="20"/>
-            <Setter Property="Foreground" Value="DarkSlateGray"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Background" Value="AntiqueWhite"/>
-            <Setter Property="BorderBrush" Value="DarkGray"/>
-        </Style>
         <Style TargetType="Label">
             <Setter Property="Margin" Value="10"/>
-            <Setter Property="Foreground" Value="white"/>
+            <Setter Property="Foreground" Value="#e0afa0"/>
+        </Style>
+
+        <Style x:Key="MyButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderThickness="0" BorderBrush="Black" Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#e0afa0"/>
+                                <Setter Property="Foreground" Value="#463f3a"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Border" TargetType="Border">
+                <Setter Property="CornerRadius" Value="10"></Setter>
+            <Setter Property="BorderBrush" Value="#827873"></Setter>
+            <Setter Property="BorderThickness" Value="5"></Setter>
         </Style>
     </Page.Resources>
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="100"/>
         </Grid.ColumnDefinitions>
@@ -34,20 +54,28 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="120"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
-        <Label FontSize="50" Foreground="AntiqueWhite" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center">BIBLIOTEKA</Label>
-
-        <Button x:Name="addBtn" Grid.Column="1" Grid.Row="1" Click="addBookButton_Click" >dodaj książkę</Button>
-        <Button x:Name="addReaderBtn" Grid.Column="1" Grid.Row="3" Click="addReaderButton_Click">dodaj czytelnika</Button>
-        <Button x:Name="booksBtn" Grid.Column="2" Grid.Row="1" Click="booksButton_Click">baza książek</Button>
-        <Button x:Name="lendBtn" Grid.Column="2" Grid.Row="2" Click="lendButton_Click">wypożycz</Button>
-        <Button x:Name="returnBtn" Grid.Column="3" Grid.Row="1"  Click="returnButton_Click">zwroty</Button>
-        <Button x:Name="historyBtn" Grid.Column="3" Grid.Row="3"  Click="historyButton_Click">historia</Button>
-        <Button x:Name="readersBtn" Grid.Column="2" Grid.Row="3"  Click="readersButton_Click">baza czytelników</Button>
-
+        <Label FontSize="50" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5" VerticalAlignment="Center" HorizontalAlignment="Center">BIBLIOTEKA</Label>
+        <Border Style="{StaticResource Border}" Grid.Column="1" Grid.Row="1">
+            <Button Style="{StaticResource MyButton}" x:Name="booksBtn"  Click="booksButton_Click">BAZA KSIĄŻEK</Button>
+        </Border>
+        <Border  Style="{StaticResource Border}" Grid.Column="3" Grid.Row="1" >
+            <Button Style="{StaticResource MyButton}" x:Name="lendBtn" Click="lendButton_Click">WYPOŻYCZ</Button>
+        </Border>
+        <Border Style="{StaticResource Border}" Grid.Column="3" Grid.Row="3">
+            <Button  Style="{StaticResource MyButton}" x:Name="returnBtn" Click="returnButton_Click">ZWROTY</Button>
+        </Border>
+        <Border   Style="{StaticResource Border}" Grid.Column="5" Grid.Row="3" >
+            <Button Style="{StaticResource MyButton}" x:Name="historyBtn" Click="historyButton_Click">HISTORIA</Button>
+        </Border>
+        <Border   Style="{StaticResource Border}" Grid.Column="1" Grid.Row="3" >
+            <Button Style="{StaticResource MyButton}" x:Name="readersBtn" Click="readersButton_Click">BAZA CZYTELNIKÓW</Button>
+        </Border>
     </Grid>
 </Page>

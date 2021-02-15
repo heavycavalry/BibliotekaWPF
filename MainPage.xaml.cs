@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Biblioteka
 {
@@ -11,13 +12,10 @@ namespace Biblioteka
         public MainPage()
         {
             InitializeComponent();
+
+
         }
 
-        private void addBookButton_Click(object sender, RoutedEventArgs e)
-        {
-            addBookPage bookWindow = new addBookPage();
-            bookWindow.Show();
-        }  
 
         private void returnButton_Click(object sender, RoutedEventArgs e)
         {
@@ -35,11 +33,6 @@ namespace Biblioteka
             historyPage.Show();
         }
 
-        private void addReaderButton_Click(object sender, RoutedEventArgs e)
-        {
-            addReaderPage readerPage = new addReaderPage();
-            readerPage.Show();
-        }
 
         private void lendButton_Click(object sender, RoutedEventArgs e)
         {

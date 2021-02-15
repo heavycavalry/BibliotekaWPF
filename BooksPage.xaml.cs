@@ -27,6 +27,12 @@ namespace Biblioteka
 
         }
 
+        private void addBookButton_Click(object sender, RoutedEventArgs e)
+        {
+            addBookPage bookWindow = new addBookPage();
+            bookWindow.Show();
+        }
+
         public void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var entities = new LibraryEntities();

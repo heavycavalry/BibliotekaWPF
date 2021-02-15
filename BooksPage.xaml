@@ -32,6 +32,7 @@
 
         <Label Grid.Row="0" Grid.Column="1">Książki</Label>
         <DataGrid Name="bookDataGrid" Grid.Column="1" Grid.Row="3"/>
+        <Button x:Name="addBtn" Grid.Row="3" Click="addBookButton_Click" Content="dodaj książkę" Grid.ColumnSpan="2" Margin="110,30,352,182" />
     </Grid>
 
 </Window>

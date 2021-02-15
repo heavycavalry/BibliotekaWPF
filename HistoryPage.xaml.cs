@@ -25,7 +25,7 @@ namespace Biblioteka
             var entities = new LibraryEntities();
 
             var query = from lend in entities.LendHistories
-                        select new { Data = lend.LendingDate, AutorNazwisko = lend.Book.Author.LastName, AutorImie = lend.Book.Author.FirstName, Tytul = lend.Book.Title , ImieCzytelnika = lend.Reader.FirstName, NazwiskoCzytelnika = lend.Reader.LastName};
+                        select new { Data = lend.LendingDate, Nazwisko = lend.Reader.LastName, Imie = lend.Reader.FirstName, Autor = lend.Book.Author.LastName, Tytul = lend.Book.Title};
 
             historyDataGrid.ItemsSource = query.ToList();
 

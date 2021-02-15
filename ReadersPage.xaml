@@ -28,5 +28,6 @@
             </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="1">Baza czytelników</Label>
             <DataGrid Grid.Column="1" Grid.Row="1" x:Name="readersDataGrid"></DataGrid>
-        </Grid>
+        <Button x:Name="addReaderBtn" Grid.Column="1" Grid.Row="1" Click="addReaderButton_Click" Content="dodaj czytelnika" Margin="10,204,402,29"/>
+    </Grid>
 </Window>
