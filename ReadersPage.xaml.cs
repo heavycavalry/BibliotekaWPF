@@ -26,5 +26,10 @@ namespace Biblioteka
             addReaderPage readerPage = new addReaderPage();
             readerPage.Show();
         }
+
+        private void removeReaderButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

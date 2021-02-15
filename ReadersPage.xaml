@@ -5,29 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Biblioteka"
         mc:Ignorable="d"
-        Title="ReadersPage" Height="450" Width="800" Background="#373737">
+        Title="ReadersPage" Width="1000" Height="500" Background="#333533" FontSize="22">
     <Window.Resources>
         <Style TargetType="Label">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Foreground" Value="#e0afa0"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Foreground" Value="AntiqueWhite"/>
-            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontSize" Value="40"/>
+        </Style>
+        <Style x:Key="Border" TargetType="Border">
+            <Setter Property="CornerRadius" Value="10"></Setter>
+            <Setter Property="BorderBrush" Value="#827873"></Setter>
+            <Setter Property="BorderThickness" Value="5"></Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Background" Value="#e0afa0"/>
+            <Setter Property="Foreground" Value="#333533"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
         </Style>
     </Window.Resources>
 
     <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="100"/>
-            </Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
+        </Grid.ColumnDefinitions>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="50"/>
-            </Grid.RowDefinitions>
-        <Label Grid.Row="0" Grid.Column="1">Baza czytelników</Label>
-            <DataGrid Grid.Column="1" Grid.Row="1" x:Name="readersDataGrid"></DataGrid>
-        <Button x:Name="addReaderBtn" Grid.Column="1" Grid.Row="1" Click="addReaderButton_Click" Content="dodaj czytelnika" Margin="10,204,402,29"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        
+        <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">BAZA CZYTELNIKÓW</Label>
+        <DataGrid Grid.Column="2" Grid.RowSpan="2" Grid.Row="1" x:Name="readersDataGrid"></DataGrid>
+        <Button x:Name="addReaderBtn" Grid.Column="1" Grid.Row="1" Click="addReaderButton_Click" Content="DODAJ CZYTELNIKA"/>
+        <Button x:Name="removeReaderBtn" Grid.Column="1" Grid.Row="2" Click="removeReaderButton_Click" Content="USUŃ CZYTELNIKA"/>
     </Grid>
 </Window>

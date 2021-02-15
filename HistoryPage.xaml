@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Biblioteka"
         mc:Ignorable="d"
-        Title="HistoryPage" Height="450" Width="800" Background="#373737">
-
-    <Window.Resources>
+        Title="HistoryPage" Width="1000" Height="500" Background="#333533">
+<Window.Resources>
         <Style TargetType="Label">
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Foreground" Value="AntiqueWhite"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Foreground" Value="#e0afa0"/>
             <Setter Property="FontSize" Value="30"/>
         </Style>
     </Window.Resources>
@@ -26,7 +26,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Grid.Column="1">Historia wypożyczeń</Label>
+        <Label Grid.Row="0" Grid.Column="1">HISTORIA WYPOŻYCZEŃ</Label>
         <DataGrid Grid.Column="1" Grid.Row="1" x:Name="historyDataGrid"></DataGrid>
     </Grid>
 </Window>

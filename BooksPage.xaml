@@ -5,34 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Biblioteka"
         mc:Ignorable="d"
-        Title="BooksPage" Height="450" Width="800" Background="#373737" Loaded="Window_Loaded">
+        Title="BooksPage" Width="1000" Height="500" Background="#333533" FontSize="22" Loaded="Window_Loaded">
 
     <Window.Resources>
         <Style TargetType="Label">
-            <Setter Property="Foreground" Value="AntiqueWhite"/>
-            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Foreground" Value="#e0afa0"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="40"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Background" Value="#e0afa0"/>
+            <Setter Property="Foreground" Value="#333533"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
         </Style>
     </Window.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="280"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="1">Książki</Label>
-        <DataGrid Name="bookDataGrid" Grid.Column="1" Grid.Row="3"/>
-        <Button x:Name="addBtn" Grid.Row="3" Click="addBookButton_Click" Content="dodaj książkę" Grid.ColumnSpan="2" Margin="110,30,352,182" />
+        <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">KSIĄŻKI</Label>
+        <DataGrid Name="bookDataGrid" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"/>
+            <Button Grid.Column="1" Grid.Row="1" x:Name="addBtn" Click="addBookButton_Click" Content="DODAJ KSIĄŻKĘ"/>
+            <Button Grid.Column="1" Grid.Row="2" x:Name="removeBtn" Content="USUŃ KSIĄŻKĘ"/>
     </Grid>
 
 </Window>
