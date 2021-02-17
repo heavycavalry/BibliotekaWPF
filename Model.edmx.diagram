@@ -4,17 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="95860909275b4f58ae2d32db82c50ff5" Name="Diagram1">
-        <EntityTypeShape EntityType="LibraryModel.Author" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryModel.Book" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryModel.Lend" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryModel.LendHistory" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryModel.Reader" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+      <Diagram DiagramId="fd4b58fe26c4400da00562d66ef82b18" Name="Diagram1">
+        <EntityTypeShape EntityType="LibraryModel.Author" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Book" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.LendHistory" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryModel.Reader" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
         <AssociationConnector Association="LibraryModel.FK__Book__AuthorID__34C8D9D1" ManuallyRouted="false" />
-        <AssociationConnector Association="LibraryModel.FK__Lend__BookID__44FF419A" ManuallyRouted="false" />
-        <AssociationConnector Association="LibraryModel.FK__LendHisto__BookI__3A81B327" ManuallyRouted="false" />
-        <AssociationConnector Association="LibraryModel.FK__Lend__ReaderID__440B1D61" ManuallyRouted="false" />
-        <AssociationConnector Association="LibraryModel.FK__LendHisto__Reade__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK__LendHisto__BookI__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="LibraryModel.FK__LendHisto__Reade__5441852A" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

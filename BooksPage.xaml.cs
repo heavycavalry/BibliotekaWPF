@@ -16,6 +16,20 @@ using System.Data.Entity.Core.Objects;
 
 namespace Biblioteka
 {
+
+
+    public class BookGridRow
+    {
+        public bool CzyDostepne { get; set; }
+        public string Imie_Autora { get; set; }
+        public string Nazwisko_Autora { get; set; }
+        public string Tytul { get; set; }
+        public string DataWydania { get; set; }
+
+
+    }
+
+
     /// <summary>
     /// Interaction logic for LendingPage.xaml
     /// </summary>
@@ -38,10 +52,19 @@ namespace Biblioteka
             var entities = new LibraryEntities();
 
             var query = from book in entities.Books
-                        select new { Imie_Autora = book.Author.FirstName, Nazwisko_Autora=book.Author.LastName, Tytul = book.Title};
+                        where book.InStock == true
+                        select new BookGridRow { CzyDostepne = book.InStock, Imie_Autora = book.Author.FirstName, Nazwisko_Autora = book.Author.LastName, Tytul = book.Title, DataWydania = book.PublishYear};
+
 
             bookDataGrid.ItemsSource = query.ToList();
+            bookDataGrid.Columns[0].Visibility = Visibility.Collapsed;
         }
 
+        private void removeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            BookGridRow selectedItem = bookDataGrid.SelectedItem as BookGridRow;
+            selectedItem.CzyDostepne = false;
+            
+        }
     }
 }

@@ -17,17 +17,16 @@ namespace Biblioteka
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Book()
         {
-            this.Lends = new HashSet<Lend>();
             this.LendHistories = new HashSet<LendHistory>();
         }
     
         public int ID { get; set; }
         public Nullable<int> AuthorID { get; set; }
         public string Title { get; set; }
+        public bool InStock { get; set; }
+        public string PublishYear { get; set; }
     
         public virtual Author Author { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Lend> Lends { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LendHistory> LendHistories { get; set; }
     }

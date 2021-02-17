@@ -10,7 +10,7 @@ namespace Biblioteka
     /// </summary>
     /// 
 
-    public class GridRow
+    public class LendGridRow
     {
         public int Identyfikator { get; set; }
         public string  Imie_Autora { get; set; }
@@ -32,11 +32,12 @@ namespace Biblioteka
         {
             var db = new LibraryEntities();
 
-            var query = from book in db.Books 
-                        join lend in db.Lends 
+            var query = from book in db.Books
+                        where book.InStock == true
+                        join lend in db.LendHistories 
                         on book.ID equals lend.BookID into j
                         from lend in j.DefaultIfEmpty()
-                        select new GridRow { Identyfikator = book.ID, Imie_Autora = book.Author.FirstName, Nazwisko_Autora = book.Author.LastName, Tytul = book.Title, Wypozyczono = lend != null};
+                        select new LendGridRow { Identyfikator = book.ID, Imie_Autora = book.Author.FirstName, Nazwisko_Autora = book.Author.LastName, Tytul = book.Title, Wypozyczono = lend != null && lend.ReturnDate == null};
 
             lendDataGrid.ItemsSource = query.ToList();
 
@@ -55,7 +56,7 @@ namespace Biblioteka
             }
 
             var queryInputReader = from reader in db.Readers
-                                   where reader.Pesel == peselInput.Text
+                                   where reader.Pesel == peselInput.Text & reader.Active == true
                                    select reader;
 
 
@@ -63,21 +64,15 @@ namespace Biblioteka
 
             foreach (Reader reader in readers)
             {
-                Lend lend = new Lend();
                 LendHistory lendHistory = new LendHistory();
 
-                GridRow selectedItem = lendDataGrid.SelectedItem as GridRow;
+                LendGridRow selectedItem = lendDataGrid.SelectedItem as LendGridRow;
 
                 if (selectedItem != null) {
-                    lend.ReaderID = reader.ID;
-                    lend.BookID = selectedItem.Identyfikator;
-                    db.Lends.Add(lend);
 
                     lendHistory.ReaderID = reader.ID;
                     lendHistory.BookID = selectedItem.Identyfikator;
                     lendHistory.LendingDate = DateTime.Now;
-                    TimeSpan month = new TimeSpan(30,0,0,0);
-                    lendHistory.ReturnDate = DateTime.Now.Add(month);
                     db.LendHistories.Add(lendHistory);
 
                     db.SaveChanges();

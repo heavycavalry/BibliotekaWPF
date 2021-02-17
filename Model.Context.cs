@@ -27,7 +27,6 @@ namespace Biblioteka
     
         public virtual DbSet<Author> Authors { get; set; }
         public virtual DbSet<Book> Books { get; set; }
-        public virtual DbSet<Lend> Lends { get; set; }
         public virtual DbSet<LendHistory> LendHistories { get; set; }
         public virtual DbSet<Reader> Readers { get; set; }
     }

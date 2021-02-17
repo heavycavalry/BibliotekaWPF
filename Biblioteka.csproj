@@ -83,9 +83,6 @@
     <Compile Include="BooksPage.xaml.cs">
       <DependentUpon>BooksPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Lend.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="LendHistory.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -112,6 +109,9 @@
     </Compile>
     <Compile Include="ReadersPage.xaml.cs">
       <DependentUpon>ReadersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnPage.xaml.cs">
+      <DependentUpon>ReturnPage.xaml</DependentUpon>
     </Compile>
     <Page Include="addBookPage.xaml">
       <SubType>Designer</SubType>
@@ -153,6 +153,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ReadersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReturnPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

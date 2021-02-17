@@ -38,6 +38,8 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
@@ -45,13 +47,15 @@
         <Label Grid.Column="1" Grid.Row="1" FontSize="20" FontWeight="Bold">Imie autora:</Label>
         <Label Grid.Column="1" Grid.Row="2" FontSize="20" FontWeight="Bold">Nazwisko autora:</Label>
         <Label Grid.Column="1" Grid.Row="3" FontSize="20" FontWeight="Bold">Tytuł:</Label>
+        <Label Grid.Column="1" Grid.Row="4" FontSize="20" FontWeight="Bold">Data wydania:</Label>
 
         <TextBox x:Name="imieInput" Grid.Column="3" Grid.Row="1"/>
         <TextBox x:Name="nazwiskoInput" Grid.Column="3" Grid.Row="2"/>
         <TextBox x:Name="tytulInput"  Grid.Column="3" Grid.Row="3" />
-        <TextBlock x:Name="exceptionInfo" Margin="0,10,0,0" Grid.Column="2" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Red"></TextBlock>
-        <TextBlock x:Name="successInfo" Margin="0,10,0,0" Grid.Column="2" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="green"></TextBlock>
-        <Button x:Name="addBookBtn" Grid.Column="2" Grid.Row="4" Height="40" Margin="10,40,10,0" Click="addBookBtn_Click">DODAJ</Button>
+        <TextBox x:Name="dataInput"  Grid.Column="3" Grid.Row="4" />
+        <TextBlock x:Name="exceptionInfo" Margin="0,10,0,0" Grid.Column="2" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="Red"></TextBlock>
+        <TextBlock x:Name="successInfo" Margin="0,10,0,0" Grid.Column="2" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="green"></TextBlock>
+        <Button x:Name="addBookBtn" Grid.Column="2" Grid.Row="5" Height="40" Margin="10,40,10,0" Click="addBookBtn_Click">DODAJ</Button>
 
     </Grid>
 </Window>

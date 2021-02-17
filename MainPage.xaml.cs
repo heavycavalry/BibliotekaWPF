@@ -13,12 +13,13 @@ namespace Biblioteka
         {
             InitializeComponent();
 
-
         }
 
 
         private void returnButton_Click(object sender, RoutedEventArgs e)
         {
+            ReturnPage returnPage = new ReturnPage();
+            returnPage.Show();
         }
 
         private void booksButton_Click(object sender, RoutedEventArgs e)

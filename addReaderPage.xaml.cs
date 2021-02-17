@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Biblioteka
 {
@@ -18,15 +8,20 @@ namespace Biblioteka
     /// Interaction logic for addReaderPage.xaml
     /// </summary>
     public partial class addReaderPage : Window
+
     {
+
+        LibraryEntities entities = new LibraryEntities();
+
+
         public addReaderPage()
         {
             InitializeComponent();
         }
 
+
         private void addReaderBtn_Click(object sender, RoutedEventArgs e)
         {
-            var entities = new LibraryEntities();
             var reader = new Reader();
             reader.FirstName = imieInput.Text.Trim();
             reader.LastName = nazwiskoInput.Text.Trim();
@@ -34,8 +29,16 @@ namespace Biblioteka
 
             if (ReaderExists(peselInput.Text))
             {
+                var queryNotActiveReader = from user in entities.Readers
+                                           where user.Pesel == peselInput.Text & user.Active == false
+                                           select new { user};
+
+                queryNotActiveReader.First().user.Active = true;
+                
+                entities.SaveChanges();
+
                 successInfo.Text = "";
-                exceptionInfo.Text = "Użytkownik o podanym peselu istnieje w bazie danych";
+                exceptionInfo.Text = "Dodano ponownie do czytelników.";
                 return;
             }
             if (peselInput.Text.Length < 11)
@@ -51,13 +54,11 @@ namespace Biblioteka
                 exceptionInfo.Text = "";
                 successInfo.Text = "Dodano czytelnika";
             }
-            
+
         }
 
         public bool ReaderExists(string pesel)
         {
-
-            var entities = new LibraryEntities();
 
             return entities.Readers.Any(x => x.Pesel.Equals(pesel, StringComparison.InvariantCultureIgnoreCase));
         }
