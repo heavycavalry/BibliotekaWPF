@@ -5,16 +5,16 @@ using System.Windows;
 namespace Biblioteka
 {
     /// <summary>
-    /// Interaction logic for addReaderPage.xaml
+    /// Interaction logic for AddReaderPage.xaml
     /// </summary>
-    public partial class addReaderPage : Window
+    public partial class AddReaderPage : Window
 
     {
 
         LibraryEntities entities = new LibraryEntities();
 
 
-        public addReaderPage()
+        public AddReaderPage()
         {
             InitializeComponent();
         }
@@ -26,6 +26,7 @@ namespace Biblioteka
             reader.FirstName = imieInput.Text.Trim();
             reader.LastName = nazwiskoInput.Text.Trim();
             reader.Pesel = peselInput.Text.Trim();
+            reader.Active = true;
 
             if (ReaderExists(peselInput.Text))
             {
@@ -57,7 +58,7 @@ namespace Biblioteka
 
         }
 
-        public bool ReaderExists(string pesel)
+        private bool ReaderExists(string pesel)
         {
 
             return entities.Readers.Any(x => x.Pesel.Equals(pesel, StringComparison.InvariantCultureIgnoreCase));

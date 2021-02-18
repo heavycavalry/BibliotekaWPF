@@ -11,7 +11,7 @@ namespace Biblioteka
 
         LibraryEntities entities = new LibraryEntities();
 
-        public class ReadersGridRow
+        private class ReadersGridRow
         {
             public Reader Reader { get; set; }
 
@@ -19,7 +19,6 @@ namespace Biblioteka
             public string Nazwisko { get; set; }
             public string Imie { get; set; }
             public string Pesel { get; set; }
-            public bool Active { get; set; }
 
         }
 
@@ -27,18 +26,29 @@ namespace Biblioteka
         {
             InitializeComponent();
 
+        }
 
+        private void showReaders()
+        {
             var query = from reader in entities.Readers
                         where reader.Active == true
                         select new ReadersGridRow { Reader = reader, Identyfikator = reader.ID, Nazwisko = reader.LastName, Imie = reader.FirstName, Pesel = reader.Pesel };
-            
+
             readersDataGrid.ItemsSource = query.ToList();
+            readersDataGrid.Columns[0].Visibility = Visibility.Collapsed;
+            readersDataGrid.Items.Refresh();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            showReaders();
         }
 
 
         private void addReaderButton_Click(object sender, RoutedEventArgs e)
         {
-            addReaderPage readerPage = new addReaderPage();
+            AddReaderPage readerPage = new AddReaderPage();
             readerPage.Show();
         }
 
@@ -49,6 +59,7 @@ namespace Biblioteka
             var reader = selectedItem.Reader;
             reader.Active = false;
             entities.SaveChanges();
+            showReaders();
         }
     }
 }

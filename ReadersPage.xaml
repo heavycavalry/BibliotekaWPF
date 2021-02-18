@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Biblioteka"
         mc:Ignorable="d"
-        Title="ReadersPage" Width="1000" Height="500" Background="#333533" FontSize="22">
+        Title="ReadersPage" Width="1000" Height="500" Background="#333533" FontSize="22" Loaded="Window_Loaded">
     <Window.Resources>
         <Style TargetType="Label">
             <Setter Property="Margin" Value="10"/>

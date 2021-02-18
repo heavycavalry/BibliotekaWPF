@@ -14,8 +14,9 @@ namespace Biblioteka
     
     public partial class LendHistory
     {
-        public Nullable<int> ReaderID { get; set; }
-        public int BookID { get; set; }
+        public int ID { get; set; }
+        public int ReaderID { get; set; }
+        public string BookID { get; set; }
         public System.DateTime LendingDate { get; set; }
         public Nullable<System.DateTime> ReturnDate { get; set; }
     

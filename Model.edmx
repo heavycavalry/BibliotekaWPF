@@ -4,32 +4,32 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="LibraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="LibraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Author">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="ISBN" />
+          </Key>
+          <Property Name="ISBN" Type="nvarchar" MaxLength="13" Nullable="false" />
+          <Property Name="AuthorID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PublishYear" Type="nvarchar" MaxLength="4" Nullable="false" />
+          <Property Name="InStock" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LendHistory">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="AuthorID" Type="int" />
-          <Property Name="Title" Type="nvarchar" MaxLength="100" />
-          <Property Name="InStock" Type="bit" Nullable="false" />
-          <Property Name="PublishYear" Type="nvarchar" MaxLength="4" />
-        </EntityType>
-        <EntityType Name="LendHistory">
-          <Key>
-            <PropertyRef Name="BookID" />
-            <PropertyRef Name="LendingDate" />
-          </Key>
-          <Property Name="ReaderID" Type="int" />
-          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="ReaderID" Type="int" Nullable="false" />
+          <Property Name="BookID" Type="nvarchar" MaxLength="13" Nullable="false" />
           <Property Name="LendingDate" Type="datetime" Nullable="false" />
           <Property Name="ReturnDate" Type="datetime" />
         </EntityType>
@@ -38,13 +38,13 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
-          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
-          <Property Name="Pesel" Type="nvarchar" MaxLength="11" />
-          <Property Name="Active" Type="bit" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Pesel" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Book__AuthorID__34C8D9D1">
-          <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
+        <Association Name="FK__Book__AuthorID__276EDEB3">
+          <End Role="Author" Type="Self.Author" Multiplicity="1" />
           <End Role="Book" Type="Self.Book" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Author">
@@ -55,20 +55,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LendHisto__BookI__5535A963">
+        <Association Name="FK__LendHisto__BookI__412EB0B6">
           <End Role="Book" Type="Self.Book" Multiplicity="1" />
           <End Role="LendHistory" Type="Self.LendHistory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Book">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="ISBN" />
             </Principal>
             <Dependent Role="LendHistory">
               <PropertyRef Name="BookID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LendHisto__Reade__5441852A">
-          <End Role="Reader" Type="Self.Reader" Multiplicity="0..1" />
+        <Association Name="FK__LendHisto__Reade__403A8C7D">
+          <End Role="Reader" Type="Self.Reader" Multiplicity="1" />
           <End Role="LendHistory" Type="Self.LendHistory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Reader">
@@ -84,20 +84,21 @@
           <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LendHistory" EntityType="Self.LendHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reader" EntityType="Self.Reader" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Book__AuthorID__34C8D9D1" Association="Self.FK__Book__AuthorID__34C8D9D1">
+          <AssociationSet Name="FK__Book__AuthorID__276EDEB3" Association="Self.FK__Book__AuthorID__276EDEB3">
             <End Role="Author" EntitySet="Author" />
             <End Role="Book" EntitySet="Book" />
           </AssociationSet>
-          <AssociationSet Name="FK__LendHisto__BookI__5535A963" Association="Self.FK__LendHisto__BookI__5535A963">
+          <AssociationSet Name="FK__LendHisto__BookI__412EB0B6" Association="Self.FK__LendHisto__BookI__412EB0B6">
             <End Role="Book" EntitySet="Book" />
             <End Role="LendHistory" EntitySet="LendHistory" />
           </AssociationSet>
-          <AssociationSet Name="FK__LendHisto__Reade__5441852A" Association="Self.FK__LendHisto__Reade__5441852A">
+          <AssociationSet Name="FK__LendHisto__Reade__403A8C7D" Association="Self.FK__LendHisto__Reade__403A8C7D">
             <End Role="Reader" EntitySet="Reader" />
             <End Role="LendHistory" EntitySet="LendHistory" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LibraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -107,46 +108,46 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Books" Relationship="Self.FK__Book__AuthorID__34C8D9D1" FromRole="Author" ToRole="Book" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="Self.FK__Book__AuthorID__276EDEB3" FromRole="Author" ToRole="Book" />
         </EntityType>
         <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="ISBN" />
+          </Key>
+          <Property Name="ISBN" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AuthorID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PublishYear" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InStock" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Author" Relationship="Self.FK__Book__AuthorID__276EDEB3" FromRole="Book" ToRole="Author" />
+          <NavigationProperty Name="LendHistories" Relationship="Self.FK__LendHisto__BookI__412EB0B6" FromRole="Book" ToRole="LendHistory" />
+        </EntityType>
+        <EntityType Name="LendHistory">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AuthorID" Type="Int32" />
-          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="InStock" Type="Boolean" Nullable="false" />
-          <Property Name="PublishYear" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Author" Relationship="Self.FK__Book__AuthorID__34C8D9D1" FromRole="Book" ToRole="Author" />
-          <NavigationProperty Name="LendHistories" Relationship="Self.FK__LendHisto__BookI__5535A963" FromRole="Book" ToRole="LendHistory" />
-        </EntityType>
-        <EntityType Name="LendHistory">
-          <Key>
-            <PropertyRef Name="BookID" />
-            <PropertyRef Name="LendingDate" />
-          </Key>
-          <Property Name="ReaderID" Type="Int32" />
-          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="ReaderID" Type="Int32" Nullable="false" />
+          <Property Name="BookID" Type="String" MaxLength="13" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LendingDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ReturnDate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Book" Relationship="Self.FK__LendHisto__BookI__5535A963" FromRole="LendHistory" ToRole="Book" />
-          <NavigationProperty Name="Reader" Relationship="Self.FK__LendHisto__Reade__5441852A" FromRole="LendHistory" ToRole="Reader" />
+          <NavigationProperty Name="Book" Relationship="Self.FK__LendHisto__BookI__412EB0B6" FromRole="LendHistory" ToRole="Book" />
+          <NavigationProperty Name="Reader" Relationship="Self.FK__LendHisto__Reade__403A8C7D" FromRole="LendHistory" ToRole="Reader" />
         </EntityType>
         <EntityType Name="Reader">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Pesel" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="LendHistories" Relationship="Self.FK__LendHisto__Reade__5441852A" FromRole="Reader" ToRole="LendHistory" />
-          <Property Name="Active" Type="Boolean" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pesel" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="LendHistories" Relationship="Self.FK__LendHisto__Reade__403A8C7D" FromRole="Reader" ToRole="LendHistory" />
         </EntityType>
-        <Association Name="FK__Book__AuthorID__34C8D9D1">
-          <End Role="Author" Type="Self.Author" Multiplicity="0..1" />
+        <Association Name="FK__Book__AuthorID__276EDEB3">
+          <End Role="Author" Type="Self.Author" Multiplicity="1" />
           <End Role="Book" Type="Self.Book" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Author">
@@ -157,20 +158,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LendHisto__BookI__5535A963">
+        <Association Name="FK__LendHisto__BookI__412EB0B6">
           <End Role="Book" Type="Self.Book" Multiplicity="1" />
           <End Role="LendHistory" Type="Self.LendHistory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Book">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="ISBN" />
             </Principal>
             <Dependent Role="LendHistory">
               <PropertyRef Name="BookID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__LendHisto__Reade__5441852A">
-          <End Role="Reader" Type="Self.Reader" Multiplicity="0..1" />
+        <Association Name="FK__LendHisto__Reade__403A8C7D">
+          <End Role="Reader" Type="Self.Reader" Multiplicity="1" />
           <End Role="LendHistory" Type="Self.LendHistory" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Reader">
@@ -186,15 +187,15 @@
           <EntitySet Name="Books" EntityType="Self.Book" />
           <EntitySet Name="LendHistories" EntityType="Self.LendHistory" />
           <EntitySet Name="Readers" EntityType="Self.Reader" />
-          <AssociationSet Name="FK__Book__AuthorID__34C8D9D1" Association="Self.FK__Book__AuthorID__34C8D9D1">
+          <AssociationSet Name="FK__Book__AuthorID__276EDEB3" Association="Self.FK__Book__AuthorID__276EDEB3">
             <End Role="Author" EntitySet="Authors" />
             <End Role="Book" EntitySet="Books" />
           </AssociationSet>
-          <AssociationSet Name="FK__LendHisto__BookI__5535A963" Association="Self.FK__LendHisto__BookI__5535A963">
+          <AssociationSet Name="FK__LendHisto__BookI__412EB0B6" Association="Self.FK__LendHisto__BookI__412EB0B6">
             <End Role="Book" EntitySet="Books" />
             <End Role="LendHistory" EntitySet="LendHistories" />
           </AssociationSet>
-          <AssociationSet Name="FK__LendHisto__Reade__5441852A" Association="Self.FK__LendHisto__Reade__5441852A">
+          <AssociationSet Name="FK__LendHisto__Reade__403A8C7D" Association="Self.FK__LendHisto__Reade__403A8C7D">
             <End Role="Reader" EntitySet="Readers" />
             <End Role="LendHistory" EntitySet="LendHistories" />
           </AssociationSet>
@@ -217,17 +218,18 @@
           <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="LibraryModel.Book">
               <MappingFragment StoreEntitySet="Book">
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
                 <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="InStock" ColumnName="InStock" />
                 <ScalarProperty Name="PublishYear" ColumnName="PublishYear" />
+                <ScalarProperty Name="InStock" ColumnName="InStock" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LendHistories">
             <EntityTypeMapping TypeName="LibraryModel.LendHistory">
               <MappingFragment StoreEntitySet="LendHistory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ReaderID" ColumnName="ReaderID" />
                 <ScalarProperty Name="BookID" ColumnName="BookID" />
                 <ScalarProperty Name="LendingDate" ColumnName="LendingDate" />
@@ -238,11 +240,11 @@
           <EntitySetMapping Name="Readers">
             <EntityTypeMapping TypeName="LibraryModel.Reader">
               <MappingFragment StoreEntitySet="Reader">
-                <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="Pesel" ColumnName="Pesel" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -64,11 +64,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="addBookPage.xaml.cs">
-      <DependentUpon>addBookPage.xaml</DependentUpon>
+    <Compile Include="AddBookPage.xaml.cs">
+      <DependentUpon>AddBookPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="addReaderPage.xaml.cs">
-      <DependentUpon>addReaderPage.xaml</DependentUpon>
+    <Compile Include="AddReaderPage.xaml.cs">
+      <DependentUpon>AddReaderPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Author.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -76,7 +76,6 @@
     <Compile Include="Book.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="BookTile.cs" />
     <Compile Include="HistoryPage.xaml.cs">
       <DependentUpon>HistoryPage.xaml</DependentUpon>
     </Compile>
@@ -113,11 +112,11 @@
     <Compile Include="ReturnPage.xaml.cs">
       <DependentUpon>ReturnPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="addBookPage.xaml">
+    <Page Include="AddBookPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="addReaderPage.xaml">
+    <Page Include="AddReaderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

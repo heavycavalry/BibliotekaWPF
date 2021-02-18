@@ -10,38 +10,49 @@ namespace Biblioteka
     /// </summary>
     /// 
 
-    public class LendGridRow
-    {
-        public int Identyfikator { get; set; }
-        public string  Imie_Autora { get; set; }
-        public string Nazwisko_Autora { get; set; }
-        public string Tytul { get; set; }
-        public bool Wypozyczono { get; set; }
-
-    }
+    
 
     public partial class LendingPage : Window
     {
+        private class LendGridRow
+        {
+            public string ISBN { get; set; }
+            public string Imie_Autora { get; set; }
+            public string Nazwisko_Autora { get; set; }
+            public string Tytul { get; set; }
+            public bool Wypozyczono { get; set; }
+
+        }
+
         public LendingPage()
         {
             InitializeComponent();
         }
 
 
-        public void Data_Loaded(object sender, RoutedEventArgs e)
+        private void showBooks()
         {
             var db = new LibraryEntities();
 
             var query = from book in db.Books
-                        where book.InStock == true
-                        join lend in db.LendHistories 
-                        on book.ID equals lend.BookID into j
+                        where book.InStock
+                        join lend in db.LendHistories
+                        on book.ISBN equals lend.BookID into j
                         from lend in j.DefaultIfEmpty()
-                        select new LendGridRow { Identyfikator = book.ID, Imie_Autora = book.Author.FirstName, Nazwisko_Autora = book.Author.LastName, Tytul = book.Title, Wypozyczono = lend != null && lend.ReturnDate == null};
+                        where lend == null | lend.ReturnDate == null
+                        select new LendGridRow { 
+                            ISBN = book.ISBN, Imie_Autora = book.Author.FirstName, Nazwisko_Autora = book.Author.LastName, Tytul = book.Title, 
+                            Wypozyczono = lend != null && lend.ReturnDate == null 
+                        };
 
             lendDataGrid.ItemsSource = query.ToList();
 
-            lendDataGrid.Columns[0].Visibility = Visibility.Collapsed;
+            lendDataGrid.Items.Refresh();
+        }
+
+        private void Data_Loaded(object sender, RoutedEventArgs e)
+        {
+            showBooks();
         }
 
 
@@ -70,20 +81,29 @@ namespace Biblioteka
 
                 if (selectedItem != null) {
 
-                    lendHistory.ReaderID = reader.ID;
-                    lendHistory.BookID = selectedItem.Identyfikator;
-                    lendHistory.LendingDate = DateTime.Now;
-                    db.LendHistories.Add(lendHistory);
+                    if (!selectedItem.Wypozyczono)
+                    {
 
-                    db.SaveChanges();
-                    wrongDataText.Text = "";
-                    correctDataText.Text = "Wypożyczono.";
+                        lendHistory.ReaderID = reader.ID;
+                        lendHistory.BookID = selectedItem.ISBN;
+                        lendHistory.LendingDate = DateTime.Now;
+                        db.LendHistories.Add(lendHistory);
+
+                        db.SaveChanges();
+                        wrongDataText.Text = "";
+                        correctDataText.Text = "Wypożyczono.";
+                    } else
+                    {
+                        wrongDataText.Text = "Książka jest już wypożyczona.";
+                    }
                 }
                 else
                 {
                     wrongDataText.Text = "Wybierz książkę.";
                 }
             }
+            showBooks();
+
         }
 
 

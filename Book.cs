@@ -20,11 +20,11 @@ namespace Biblioteka
             this.LendHistories = new HashSet<LendHistory>();
         }
     
-        public int ID { get; set; }
-        public Nullable<int> AuthorID { get; set; }
+        public string ISBN { get; set; }
+        public int AuthorID { get; set; }
         public string Title { get; set; }
-        public bool InStock { get; set; }
         public string PublishYear { get; set; }
+        public bool InStock { get; set; }
     
         public virtual Author Author { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
